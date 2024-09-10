@@ -1,14 +1,13 @@
-import sys
+# Количество человек
+num_people = 5000
 
-if len(sys.argv) < 2:
-    print("Передайте длину стороны квадрата.")
-    exit() # выход из программы не полностью, все что ниже выполнено не будет.
+# Открываем файл для записи
+with open('raffle_numbers.txt', 'w') as file:
+    # Генерируем номера и записываем их в файл
+    for i in range(1, num_people + 1):
+        # Форматируем номер с ведущими нулями
+        number = f"{i:04d}"
+        # Записываем строку в файл
+        file.write(f"{number} {number}\n")
 
-square_side = sys.argv[1]
-
-if not square_side.isnumeric():
-    print("Передайте число в качестве строны квадрата.")
-    exit()
-
-perimeter = int(square_side) * 4
-print(f"Периметр квадрата со стороной {square_side} равен {perimeter}")
+print(f"Номера для розыгрыша записаны в файл 'raffle_numbers.txt'.")
